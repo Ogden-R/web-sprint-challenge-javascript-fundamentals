@@ -26,13 +26,44 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. Explain the differences between `.map`, `.reduce` and `.filter` and describe a use case for each. 
 
+-.map converts data based on what follows the return keyword.
+
+-.reduce is used for multiplication and addition problems and returns a single value.
+
+-.filter filters results into a new array based on a true or false statement. this is great for when you want to find all objects with a common item from a large array, because it doesnt have to filter through every single thing without stopping like forEach.
+
 2. Explain the difference between a callback and a higher order function.
+
+-a callback is the parameter and argument that you use in another function. a higher order function is the function that you can pass the callbacks in as a parameter and argument.
+
+example: function higherOrderFunction (callbackCB){
+    return callbackCB;
+}
+console.log(higherOrderFunction(callback));
+
 
 3. Explain what a closure is.
 
+-a closure is essentially where a child(function/ nested function) hears or sees a word and doenst know what it means (its value) so they go ask their dad (outside of themselves) what that word means (what its value is). if the dad knows (its in the parent) then they tell them and the kid returns to the spot where they heard or saw the word and replaces the word with its definition (or value) to help them make more sense of it. 
+if the dad doesnt know what the word means, (the parent function has no value for the word) then the kid goes to ask the grandma (the outside of the parent). They really want to know what this word means! (THEY NEED CLOSURE!!!!)
+
 4. Describe the four principles of the 'this' keyword.
 
+1) Window binding -when we havent given 'this' any context, it comes back with undefined in strict mode, or the entire window in regular mode. we dont want this. its bad practice!!
+
+2) Implicit binding -  when we invoke the object method, it is implied that 'this refers to what is to the left of the dot.
+
+3) Explicit binding - we explicitly tell a function what 'this' should be using 
+.call (invoke immediately, pass arguments 1 by 1), 
+.apply (invoke immediately, pass arguments as array), or 
+.bind (doesnt invoke immediately but returns new funcition to be invoked later, pass arguments 1 by 1). 
+
+4) New binding - when connected to "new" keyword 'this' refers to the new object.
+
 5. Why do we need super() in an extended class?
+
+-super() is used to access and call functions on an objects parent. it goes hand in hand with the extends keyword, and you cannot successfully extend the class without the super() keyword.
+
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 

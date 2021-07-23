@@ -34,7 +34,7 @@ function summation(number) {
   }
   return count;
   }
- console.log(summation(4));
+ console.log("Task 2(Counter):", summation(4));
 
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -67,7 +67,7 @@ const zooAnimals = [
     return displayNames;
   }
   
-console.log('Topic 2, Request 1:', animalNames(zooAnimals));
+console.log("Topic 2(Advanced Array Methods), Request 1(.forEach):", animalNames(zooAnimals));
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -88,7 +88,7 @@ function lowerCaseNames(array){
  })
  return smallNames;
 }
-console.log('Topic 2, Request 2:',lowerCaseNames(zooAnimals));
+console.log("Topic 2(Advanced Array Methods), Request 2(.map):", lowerCaseNames(zooAnimals));
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
@@ -99,7 +99,7 @@ console.log('Topic 2, Request 2:',lowerCaseNames(zooAnimals));
     const lowPop = array.filter(item => item.population < 5);
     return lowPop;
   }
-console.log("Topic 2, Request 3:",lowPopulationAnimals(zooAnimals));
+console.log("Topic 2(Advanced Array Methods), Request 3(.filter):", lowPopulationAnimals(zooAnimals));
 /*
 // const lowPopulationAnimals = zooAnimals.filter(function(item){
 //   return item.population < 5;
@@ -118,7 +118,7 @@ ALSO DOESNT PASS THE TEST. WHY?
     const totalPop = zooAnimals.reduce((acc, item) => acc + item.population, 0);
  return totalPop;
  }
-   console.log("Topic 2, Request 4:", USApop());
+   console.log("Topic 2(Advanced Array Methods), Request 4(.reduce):", USApop());
    
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
@@ -158,9 +158,9 @@ function greeting(a, b){
   
   // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
   // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-  console.log(consume(2, 2, add)); // 4
-  console.log(consume(10, 16, multiply)); // 160
-  console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
+  console.log("Topic 2(Callbacks) Add:", consume(2, 2, add)); // 4
+  console.log("Topic 2(Callbacks) Multiply:", consume(10, 16, multiply)); // 160
+  console.log("Topic 2(Callbacks) Greeting:", consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
 
 // 🐴🐴🐴 Topic 3: Prototypes 🐴🐴🐴 //
 //🐴🐴🐴 Task: You are to build a cuboid maker that can return values for a cuboid's volume or surface area. Cuboids are similar to cubes but do not have even sides. Follow the steps in order to accomplish this challenge. 🐴🐴🐴
@@ -206,8 +206,8 @@ CuboidMaker.prototype.surfaceArea = function(){
 
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-console.log(cuboid.volume()); // 100
-console.log(cuboid.surfaceArea()); // 130
+console.log("Topic 3(Prototypes) Volume:", cuboid.volume()); // 100
+console.log("Topic 3(Prototypes) Surface Area:", cuboid.surfaceArea()); // 130
  
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
@@ -233,8 +233,8 @@ const cuboidTwo = new CuboidMakerTwo({
 });
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
-console.log(cuboidTwo.volume()); // 100
-console.log(cuboidTwo.surfaceArea()); // 130
+console.log("Topic 4(Classes) Volume:", cuboidTwo.volume()); // 100
+console.log("Topic 4(Classes) Surface Area:", cuboidTwo.surfaceArea()); // 130
 
 
 
@@ -243,8 +243,48 @@ console.log(cuboidTwo.surfaceArea()); // 130
 // 🦄 💪 Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.  Find out the formulas for volume and surface area for cubes and create those methods using the dimension properties from CuboidMaker.  Test your work by logging out your volume and surface area. 🦄 💪
   
 
+class CubeMaker extends CuboidMaker{
+  constructor (attributes2){
+    super(attributes2);
+    this.edge = attributes2.edge = this.length = this.width = this.height;
+  }
+  volume(){
+    return (this.edge)**3; //edge cubed
+  }
+  surfaceArea(){
+    return 6*((this.edge)**2); //six times edge squared
+  }
+}
 
+const cube = new CubeMaker({
+  length: 3,
+  width: 3,
+  height: 3,
+  edge: 3
+});
 
+const cube2 = new CubeMaker({
+  length: 5,
+  width: 5,
+  height: 5,
+  edge: 5
+});
+
+const cube3 = new CubeMaker({
+  length: 12,
+  width: 12,
+  height: 12,
+  edge: 12
+});
+
+console.log("Stretch Task, Cube 1 Volume:", cube.volume());// 3 cubed is 27
+console.log("Stretch Task, Cube 1 Surface Area:", cube.surfaceArea()); //6 times 3 squared is 54
+
+console.log("Stretch Task, Cube 2 Volume:", cube2.volume()); //5 cubed is 125
+console.log("Stretch Task, Cube 2 Surface Area:", cube2.surfaceArea());//6 times 5 squared is 150
+
+console.log("Stretch Task, Cube 3 Volume:", cube3.volume()); //12 cubed is 1728
+console.log("Stretch Task, Cube 3 Surface Area:", cube3.surfaceArea());//6 times 12 squared is 864
 
 
   /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */

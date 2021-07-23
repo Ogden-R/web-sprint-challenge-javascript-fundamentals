@@ -76,10 +76,10 @@ console.log('Topic 2, Request 1:', animalNames(zooAnimals));
   For example: ['jackal, asiatic', .....]
   */
 /*  
-  const lowerCaseNames = zooAnimals.map(function(item){
+  const lowerCaseNames1 = zooAnimals.map(function(item){
     return item.animal_name.toLowerCase();
   });
-console.log('Topic 2, Request 2:', lowerCaseNames);/*
+console.log('Topic 2, Request 2:', lowerCaseNames1);/*
 /*this  returned the exact same array as the function below, but the test showed as failing, so i changed it the answer to the one below, but i dont understand why this one failed when it showed the exact same array!!!*/
 
 function lowerCaseNames(array){
@@ -94,11 +94,19 @@ console.log('Topic 2, Request 2:',lowerCaseNames(zooAnimals));
   The zoo is concerned about animals with a lower population count. 
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
-
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+ 
+  function lowPopulationAnimals(array){
+    const lowPop = array.filter(item => item.population < 5);
+    return lowPop;
   }
-  
+console.log("Topic 2, Request 3:",lowPopulationAnimals(zooAnimals));
+/*
+// const lowPopulationAnimals = zooAnimals.filter(function(item){
+//   return item.population < 5;
+// });
+//   console.log("lowPopulationAnimals",lowPopulationAnimals);
+ALSO DOESNT PASS THE TEST. WHY?
+*/
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
   The zoo needs to know their total animal population across the United States. 
@@ -106,10 +114,12 @@ console.log('Topic 2, Request 2:',lowerCaseNames(zooAnimals));
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
-  
+  function USApop(){
+    const totalPop = zooAnimals.reduce((acc, item) => acc + item.population, 0);
+ return totalPop;
+ }
+   console.log("Topic 2, Request 4:", USApop());
+   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
   /* 🦁🦁🦁 Step 1: Create a higher-order function 🦁🦁🦁
@@ -119,38 +129,38 @@ console.log('Topic 2, Request 2:',lowerCaseNames(zooAnimals));
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
 
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
+  function consume(a, b, cb){
+    return cb(a, b);
   }
  
   
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(/*Your Code Here */){
-    /*Your Code Here*/
+function add(a, b){
+    return a + b;
   }
 
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(/*Your Code Here */){
-   /*Your Code Here */
+function multiply(a, b){
+    return a * b;
   }
 
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
+function greeting(a, b){
+   return `Hello ${a} ${b}, nice to meet you!`;
   }
   
   
   // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
   // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-  // console.log(consume(2, 2, add)); // 4
-  // console.log(consume(10, 16, multiply)); // 160
-  // console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
+  console.log(consume(2, 2, add)); // 4
+  console.log(consume(10, 16, multiply)); // 160
+  console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
 
 // 🐴🐴🐴 Topic 3: Prototypes 🐴🐴🐴 //
 //🐴🐴🐴 Task: You are to build a cuboid maker that can return values for a cuboid's volume or surface area. Cuboids are similar to cubes but do not have even sides. Follow the steps in order to accomplish this challenge. 🐴🐴🐴

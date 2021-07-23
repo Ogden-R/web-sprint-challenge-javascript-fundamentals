@@ -16,9 +16,8 @@ function myFunction() {
 myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
-
-
-
+/* nested function can access the variable internal because of closure. 
+myFunction first console.logs (external) for which it has to look outside of itself for a a value. after logging it, the variable internal is established, followed by the nestedFunction function. inside of nestedFunction we are trying to console.log internal. but the value for internal is not found inside of this function, so nestedFunction has to look outside of itself to find the value of this variable. now that nestedFunction knows the value of internal, it can close itself and be invoked. once invoked, we can close the myFunction function, which will call external first, followed by internal. therefore, closure helps nestedFunction access the variable internal.*/
 
 
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
@@ -28,11 +27,15 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
+function summation(number) {
+  let count = 0;
+  for (let i = 0; i <= number; i++){//increments and returns a counter variable
+    count += i;// make it count up.
   }
- 
+  return count;
+  }
+ console.log(summation(4));
+
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
@@ -56,9 +59,15 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function animalNames(array){
+    const displayNames = [];
+    array.forEach(function(item){
+      displayNames.push(`name: ${item.animal_name}, scientific: ${item.scientific_name}`);
+    });
+    return displayNames;
   }
+  
+console.log('Topic 2, Request 1:', animalNames(zooAnimals));
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -66,11 +75,20 @@ const zooAnimals = [
   Using lowerCaseNames use .map() to create a new array of strings with the animal's names in lowercase and return the new array. 
   For example: ['jackal, asiatic', .....]
   */
+/*  
+  const lowerCaseNames = zooAnimals.map(function(item){
+    return item.animal_name.toLowerCase();
+  });
+console.log('Topic 2, Request 2:', lowerCaseNames);/*
+/*this  returned the exact same array as the function below, but the test showed as failing, so i changed it the answer to the one below, but i dont understand why this one failed when it showed the exact same array!!!*/
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
-  
+function lowerCaseNames(array){
+  const smallNames = array.map(function(item){
+     return item.animal_name.toLowerCase();
+ })
+ return smallNames;
+}
+console.log('Topic 2, Request 2:',lowerCaseNames(zooAnimals));
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
